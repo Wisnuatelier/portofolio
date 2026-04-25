@@ -1,0 +1,252 @@
+:root {
+    --bg-color: #0a0a0a;
+    --text-color: #f0f0f0;
+    --accent-color: #ff3366;
+    --font-main: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    overflow-x: hidden;
+    cursor: none; /* Custom cursor */
+}
+
+/* Custom Cursor */
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+}
+
+a:hover ~ .cursor, h1:hover ~ .cursor {
+    width: 60px;
+    height: 60px;
+}
+
+/* Navigation */
+.nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    z-index: 100;
+    mix-blend-mode: difference;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+/* Sections */
+section {
+    padding: 10vh 5vw;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-title {
+    font-size: 15vw;
+    line-height: 0.85;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-title .line {
+    overflow: hidden;
+}
+
+.hero-title .word {
+    display: inline-block;
+    transform: translateY(100%);
+}
+
+.hero-title .indent {
+    margin-left: 20vw;
+    color: var(--accent-color);
+}
+
+.hero-subtitle {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: 300;
+    opacity: 0;
+}
+
+/* About */
+.about {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.about-text {
+    font-size: 4vw;
+    font-weight: 400;
+    line-height: 1.2;
+    max-width: 80%;
+}
+
+.about-text span {
+    opacity: 0.2;
+    transition: opacity 0.1s;
+}
+
+/* Stats */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem;
+    padding: 20vh 5vw;
+}
+
+.stat-item {
+    border-top: 2px solid var(--text-color);
+    padding-top: 2rem;
+}
+
+.stat-number {
+    font-size: 10vw;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-top: 1rem;
+}
+
+/* Projects */
+.projects {
+    padding-top: 20vh;
+}
+
+.project-header {
+    margin-bottom: 10vh;
+    border-bottom: 2px solid var(--text-color);
+    padding-bottom: 2rem;
+}
+
+.project-header h2 {
+    font-size: 3vw;
+    font-weight: 700;
+}
+
+.project-item {
+    height: 60vh;
+    border-bottom: 1px solid rgba(240,240,240,0.2);
+    display: flex;
+    align-items: center;
+    transition: background-color 0.4s;
+}
+
+.project-item:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+.project-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
+}
+
+.project-info h3 {
+    font-size: 5vw;
+    font-weight: 700;
+}
+
+.project-info p {
+    font-size: 1.2rem;
+    max-width: 400px;
+}
+
+/* Footer */
+.footer {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-cta {
+    font-size: 2vw;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.huge-link {
+    font-size: 6vw;
+    font-weight: 900;
+    color: var(--accent-color);
+    text-decoration: none;
+    position: relative;
+}
+
+.huge-link::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 0%;
+    height: 5px;
+    background-color: var(--accent-color);
+    transition: width 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.huge-link:hover::after {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .stats {
+        grid-template-columns: 1fr;
+    }
+    .project-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .project-info h3 {
+        font-size: 8vw;
+    }
+    .huge-link {
+        font-size: 8vw;
+    }
+    .hero-title {
+        font-size: 18vw;
+    }
+    .hero-title .indent {
+        margin-left: 0;
+    }
+}
